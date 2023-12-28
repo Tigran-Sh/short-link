@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:14.4
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_DB: "${POSTGRES_DB}"
+      POSTGRES_HOST: "${POSTGRES_HOST}"
+    ports:
+      - 5432:5432/tcp
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  short-link:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: short-link
+    container_name: short-link
+    env_file: .env
+    ports:
+      - 8000:8000/tcp
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+
+volumes:
+  postgres-data:
+    driver: local
