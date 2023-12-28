@@ -7,7 +7,7 @@
 
 ```bash
 # Clone the Project
-git clone git@gitlab.com:tigran-shelelenkyan/short-links.git
+git clone git@github.com:Tigran-Sh/short-link.git
 
 cd short_link
 ```
