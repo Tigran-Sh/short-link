@@ -52,7 +52,7 @@ cd short_link
 # run the web server and db
 make run
 
-# run migrate command
+# open new tab in terminal and run migrate command
 make migrate    
 ```
 
